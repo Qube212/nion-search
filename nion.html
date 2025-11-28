@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nion Search</title>
+</head>
+<body>
+  <h1>Welcome to Nion Search</h1>
+  <form id="searchForm">
+    <input type="text" id="query" placeholder="Search Nion..." style="width:300px;padding:8px;">
+    <button type="submit">Search</button>
+  </form>
+  <ul id="results"></ul>
+
+  <script>
+    const form = document.getElementById('searchForm');
+    const results = document.getElementById('results');
+
+    const fakeData = [
+      "Nion is awesome",
+      "Nion browser tips",
+      "Nion news",
+      "Nion games",
+      "Nion projects"
+    ];
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const query = document.getElementById('query').value.toLowerCase();
+      results.innerHTML = '';
+      fakeData.filter(item => item.toLowerCase().includes(query))
+              .forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                results.appendChild(li);
+              });
+    });
+  </script>
+</body>
+</html>
